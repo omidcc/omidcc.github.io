@@ -1,0 +1,23 @@
+.bg-main{
+	background-color: #cce6ff;
+}
+.mt {
+	margin-top: 10px;
+}
+.avatar{
+	padding: .25rem;
+    background-color: #fff;
+    border: 2px solid #a0333a;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+.p{
+	padding:10px;
+}
+.shadow {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.di{
+	display: inline;
+}
