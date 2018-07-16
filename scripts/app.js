@@ -21,9 +21,14 @@ var app = new Vue({
   	}
   }
 })
-
-//set scroll to top
-$(document).scrollTop(0);
+$(document).ready(function(){
+    setTimeout(function(){
+        $(".loader").css("display","none");
+        $(".overlay").css("display","none");
+        $("#app").css("display","block");
+        $(document).scrollTop(0);
+    },3000);
+});
 // create a bar chart for skills in percentage
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {

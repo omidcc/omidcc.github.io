@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Portfolio | Md. Khairul Islam Omi</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="bg-main">
+  <div class="overlay">
+    <div id="loader" class="loader">
+    </div>
+  </div>
 <div class="container" id="app">
   <!--end carosol-->  
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -40,7 +44,7 @@
     <!--end carosol-->
     <div class="mt">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#"><img src="images/dev.png" alt="nav-brand" class="nav-img"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -53,10 +57,13 @@
                 <a class="nav-link" href="#">Experiences</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" v-on:click="gotoEducations">Educations</a>
+                <a class="nav-link" href="#">Projects</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" v-on:click="gotoSkills">Skills</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" v-on:click="gotoEducations">Educations</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" v-on:click="gotoAboutMe">About Me</a>
@@ -64,6 +71,38 @@
             </ul>
           </div>
         </nav>
+    </div>
+    <div id="Experiences" class="mt p bg-white shadow">
+        <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</span></h4>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="alert alert-secondary">
+                  <ul class="li-none">
+                    <strong>Software Engineer</strong>
+                    <li><span><i class="fa fa-sitemap" aria-hidden="true"></i></span> Brain Station-23</li>
+                    <li><span><i class="fa fa-calendar" aria-hidden="true"></i></span> 01.01.2018 - present</li>
+                  </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="alert alert-info">
+                  <ul class="li-none">
+                    <strong>Jr. Software Engineer</strong>
+                    <li><span><i class="fa fa-sitemap" aria-hidden="true"></i></span> Brain Station-23</li>
+                    <li><span><i class="fa fa-calendar" aria-hidden="true"></i></span> 15.07.2016 - 31.12.2017</li>
+                  </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="alert alert-warning">
+                  <ul class="li-none">
+                    <strong>Programmer</strong>
+                    <li><span><i class="fa fa-sitemap" aria-hidden="true"></i></span> Balancika Outsourcing</li>
+                    <li><span><i class="fa fa-calendar" aria-hidden="true"></i></span> 01.09.2015 - 30.06.2016</li>
+                  </ul>
+                </div>
+            </div>
+        </div>
     </div>
     <!--educations start-->
     <div id="Educations" class="mt p bg-white shadow">
