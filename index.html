@@ -54,7 +54,7 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Experiences</a>
+                <a class="nav-link" v-on:click="gotoExperiences">Experiences</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Projects</a>
@@ -73,8 +73,14 @@
         </nav>
     </div>
     <div id="Experiences" class="mt p bg-white shadow">
-        <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</span></h4>
         <div class="row">
+          <div class="col-sm-12">
+            <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</span></h4>
+            <span class="pull-right"><i class="fa fa-chevron-down text-info" v-on:click="slideExperiences" v-show="!isExperienceOpen"></i></span>
+            <span class="pull-right"><i class="fa fa-chevron-up text-info" v-on:click="slideExperiences" v-show="isExperienceOpen"></i></span>
+          </div>
+        </div>
+        <div class="row" id="experienceDetails">
             <div class="col-sm-4">
                 <div class="alert alert-secondary">
                   <ul class="li-none">
@@ -106,8 +112,14 @@
     </div>
     <!--educations start-->
     <div id="Educations" class="mt p bg-white shadow">
-        <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Educations</span></h4>
         <div class="row">
+          <div class="col-sm-12">
+            <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Educations</span></h4>
+            <span class="pull-right"><i class="fa fa-chevron-down text-info" v-on:click="slideEducations" v-show="!isEducationOpen"></i></span>
+            <span class="pull-right"><i class="fa fa-chevron-up text-info" v-on:click="slideEducations" v-show="isEducationOpen"></i></span>
+          </div>
+        </div>
+        <div class="row" id="educationDetails">
             <div class="col-sm-4">
                 <div class="card border-primary mb-3">
                   <div class="card-header">Graduation</div>
@@ -167,8 +179,14 @@
     <!--educations end-->
     <!--skills start-->
     <div id="Skills" class="mt p bg-white shadow">
-        <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-code" aria-hidden="true"></i> Skills</span></h4>
         <div class="row">
+          <div class="col-sm-12">
+            <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-code" aria-hidden="true"></i> Skills</span></h4>
+            <span class="pull-right"><i class="fa fa-chevron-down text-info" v-on:click="slideSkills" v-show="!isSkillsOpen"></i></span>
+            <span class="pull-right"><i class="fa fa-chevron-up text-info" v-on:click="slideSkills" v-show="isSkillsOpen"></i></span>
+          </div>
+        </div>
+        <div class="row" id="skillsDetails">
             <div class="col-sm-12">
                 <canvas id="myChart" width="400" height="200" class="bg-white"></canvas>
             </div>

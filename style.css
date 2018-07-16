@@ -28,6 +28,9 @@
 .li-none{
 	list-style-type: none;
 }
+.alert-heading{
+	display: inline-block;
+}
 .overlay {
 	top: 0;
     left: 0;

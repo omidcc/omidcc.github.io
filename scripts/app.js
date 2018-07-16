@@ -2,7 +2,11 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!'
+    message: 'Hello Vue!',
+    isEducationOpen: true,
+    isExperienceOpen: true,
+    isSkillsOpen: true,
+    isProjectsOpen: true
   },
 
   methods: {
@@ -15,10 +19,31 @@ var app = new Vue({
   	gotoSkills: function(){
   		this.smoothScrollToElement("Skills");
   	},
-  	smoothScrollToElement: function (elementId){
-  		var offset = $("#" + elementId).offset();
-  		$("html,body").animate({scrollTop: offset.top},1000);
-  	}
+  	gotoExperiences: function(){
+      this.smoothScrollToElement("Experiences");
+    },
+    slideEducations: function(){
+      this.slide(this.isEducationOpen, "educationDetails");
+      this.isEducationOpen = !this.isEducationOpen;
+    },
+    slideExperiences: function(){
+      this.slide(this.isExperienceOpen, "experienceDetails");
+      this.isExperienceOpen = !this.isExperienceOpen;
+    },
+    slideSkills: function(){
+      this.slide(this.isSkillsOpen, "skillsDetails");
+      this.isSkillsOpen = !this.isSkillsOpen;
+    },
+    smoothScrollToElement: function (elementId){
+      var offset = $("#" + elementId).offset();
+      $("html,body").animate({scrollTop: offset.top},1000);
+    },
+    slide: function(show,elementId){
+      if(show)
+        $("#"+elementId).slideUp();
+      else
+        $("#"+elementId).slideDown();
+    }
   }
 })
 $(document).ready(function(){
