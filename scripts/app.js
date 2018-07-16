@@ -34,6 +34,9 @@ var app = new Vue({
       this.slide(this.isSkillsOpen, "skillsDetails");
       this.isSkillsOpen = !this.isSkillsOpen;
     },
+    gotoTop: function(){
+      $(document).scrollTop(0);
+    },
     smoothScrollToElement: function (elementId){
       var offset = $("#" + elementId).offset();
       $("html,body").animate({scrollTop: offset.top},1000);

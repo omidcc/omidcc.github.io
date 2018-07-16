@@ -31,6 +31,12 @@
 .alert-heading{
 	display: inline-block;
 }
+.btn-top{
+	background: #fff;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
 .overlay {
 	top: 0;
     left: 0;
