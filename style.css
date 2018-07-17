@@ -37,6 +37,12 @@
     right: 0;
     bottom: 0;
 }
+.f30{
+	font-size: 30px !important;
+}
+.mr{
+	margin-right: 10px;
+}
 .overlay {
 	top: 0;
     left: 0;
