@@ -43,6 +43,13 @@
 .mr{
 	margin-right: 10px;
 }
+.image-gif{
+  width: 100%;
+  height: 200px;
+}
+.small{
+  font-size: 85%;
+}
 .overlay {
 	top: 0;
     left: 0;

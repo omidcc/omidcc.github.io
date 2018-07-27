@@ -22,6 +22,9 @@ var app = new Vue({
   	gotoExperiences: function(){
       this.smoothScrollToElement("Experiences");
     },
+    gotoProjects: function(){
+      this.smoothScrollToElement("Projects");
+    },
     slideEducations: function(){
       this.slide(this.isEducationOpen, "educationDetails");
       this.isEducationOpen = !this.isEducationOpen;
@@ -33,6 +36,10 @@ var app = new Vue({
     slideSkills: function(){
       this.slide(this.isSkillsOpen, "skillsDetails");
       this.isSkillsOpen = !this.isSkillsOpen;
+    },
+    slideProjects: function(){
+      this.slide(this.isProjectsOpen, "projectDetails");
+      this.isProjectsOpen = !this.isProjectsOpen;
     },
     gotoTop: function(){
       $(document).scrollTop(0);
