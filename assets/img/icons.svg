@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#2F6F68"/><path d="M22.1 43.9 A14 14 0 1 1 41.9 43.9 M32 34 L38.2 27.4" fill="none" stroke="#F5F6F2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="17" r="4" fill="#E3A33E"/></symbol>
+  <symbol id="productivity" viewBox="0 0 64 64"><rect x="1" y="1" width="62" height="62" rx="18" fill="#FFFFFF" stroke="#C9D3CE" stroke-width="2"/><path d="M17 35 L26 44 L40 28" fill="none" stroke="#2F6F68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="17" r="4" fill="#E3A33E"/></symbol>
+  <symbol id="games" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#E3A33E"/><path d="M24 22 L42 33 L24 44 Z" fill="none" stroke="#13211F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="17" r="4" fill="#13211F"/></symbol>
+  <symbol id="utilities" viewBox="0 0 64 64"><rect x="1" y="1" width="62" height="62" rx="18" fill="#DCE5E0" stroke="#C9D3CE" stroke-width="2"/><path d="M16 28 H40 M16 42 H46" fill="none" stroke="#13211F" stroke-width="6" stroke-linecap="round"/><circle cx="26" cy="28" r="5" fill="#2F6F68"/><circle cx="36" cy="42" r="5" fill="#2F6F68"/><circle cx="48" cy="17" r="4" fill="#E3A33E"/></symbol>
+</svg>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journal — tunerapps</title>
+<meta name="description" content="Build logs, release notes, design decisions and the occasional thing we got wrong — written by the people who made it.">
+<link rel="canonical" href="https://tunerapps.net/journal/">
+<!-- TEMPLATE: placeholder posts. When real posts exist, delete the noindex line below and add /journal/ to /sitemap.xml. -->
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#F5F6F2">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="tunerapps">
+<meta property="og:title" content="Journal — tunerapps">
+<meta property="og:description" content="Build logs, release notes, design decisions and the occasional thing we got wrong.">
+<meta property="og:url" content="https://tunerapps.net/journal/">
+<meta property="og:image" content="https://tunerapps.net/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="tunerapps home">
+      <svg aria-hidden="true"><use href="/assets/img/icons.svg#logo"/></svg>
+      <span class="wordmark">tuner<span>apps</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#apps">Apps</a>
+      <a href="/#about">About</a>
+      <a href="/journal/" aria-current="page">Journal</a>
+      <a class="nav-cta" href="/#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wrap stack" style="padding-block:clamp(48px,7vw,88px) 40px;gap:20px">
+  <p class="eyebrow">Journal</p>
+  <h1 class="h-display" style="font-size:clamp(44px,6.4vw,88px)">Notes from the workbench.</h1>
+  <p class="lede" style="max-width:620px">Build logs, release notes, design decisions and the occasional thing we got wrong — written by the people who made it.</p>
+</section>
+
+<section class="wrap" style="padding-bottom:48px">
+  <a class="feature" href="#">
+    <div class="feature-art">[Cover image]</div>
+    <div class="feature-copy">
+      <div class="feature-meta"><span class="badge">Featured</span><span>Build log · [Date] · [N] min read</span></div>
+      <h2>[Featured post title]</h2>
+      <p>[Two-sentence summary of the post — what you built, what you learned, and why it matters to people using the app.]</p>
+      <span class="byline"><i></i><span>[Author name]</span></span>
+    </div>
+  </a>
+</section>
+
+<section class="wrap stack" style="padding-bottom:clamp(56px,8vw,96px);gap:28px">
+  <div class="list-bar">
+    <div class="chips" role="group" aria-label="Filter posts" data-filter-group="posts">
+      <button class="chip" type="button" data-filter="All" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="Build log" aria-pressed="false">Build log</button>
+      <button class="chip" type="button" data-filter="Release" aria-pressed="false">Release</button>
+      <button class="chip" type="button" data-filter="Craft" aria-pressed="false">Craft</button>
+      <button class="chip" type="button" data-filter="Team" aria-pressed="false">Team</button>
+    </div>
+    <span class="count" data-filter-count="posts" aria-live="polite">9 posts</span>
+  </div>
+  <div class="grid grid-posts" data-filter-list="posts">
+    <a class="post-card" href="#" data-cat="Build log"><div class="thumb build">[Image]</div><span class="post-meta">Build log · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+    <a class="post-card" href="#" data-cat="Release"><div class="thumb release">[Image]</div><span class="post-meta">Release · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+    <a class="post-card" href="#" data-cat="Craft"><div class="thumb craft">[Image]</div><span class="post-meta">Craft · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+    <a class="post-card" href="#" data-cat="Team"><div class="thumb team">[Image]</div><span class="post-meta">Team · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+    <a class="post-card" href="#" data-cat="Build log"><div class="thumb build">[Image]</div><span class="post-meta">Build log · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+    <a class="post-card" href="#" data-cat="Release"><div class="thumb release">[Image]</div><span class="post-meta">Release · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+    <a class="post-card" href="#" data-cat="Craft"><div class="thumb craft">[Image]</div><span class="post-meta">Craft · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+    <a class="post-card" href="#" data-cat="Team"><div class="thumb team">[Image]</div><span class="post-meta">Team · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+    <a class="post-card" href="#" data-cat="Build log"><div class="thumb build">[Image]</div><span class="post-meta">Build log · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> tunerapps · Made by the tunerapps team</span>
+    <nav aria-label="Footer"><a href="/privacy/">Privacy</a><a href="mailto:hello@tunerapps.net">Support</a></nav>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

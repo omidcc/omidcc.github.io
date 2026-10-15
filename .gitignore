@@ -1,2 +1,5 @@
-php/contact.php
-.idea
+node_modules/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

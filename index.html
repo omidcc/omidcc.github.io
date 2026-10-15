@@ -1,419 +1,239 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <title>Portfolio | Md. Khairul Islam Omi</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tunerapps — Smart apps, built well</title>
+<meta name="description" content="tunerapps is an app and software studio. A small team of designers and developers building and shipping mobile apps, web products, tools and games — each one fine-tuned until it simply works.">
+<link rel="canonical" href="https://tunerapps.net/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#F5F6F2">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="tunerapps">
+<meta property="og:title" content="tunerapps — Smart apps, built well">
+<meta property="og:description" content="An app and software studio. Mobile apps, web products, tools and games — fine-tuned until they simply work.">
+<meta property="og:url" content="https://tunerapps.net/">
+<meta property="og:image" content="https://tunerapps.net/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tunerapps logo — a tuning dial with an amber spark">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tunerapps.net/#org",
+      "name": "tunerapps",
+      "url": "https://tunerapps.net/",
+      "logo": "https://tunerapps.net/assets/img/icon-512.png",
+      "description": "An app and software studio building mobile apps, web products, tools and games."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tunerapps.net/#website",
+      "name": "tunerapps",
+      "url": "https://tunerapps.net/",
+      "publisher": { "@id": "https://tunerapps.net/#org" }
+    }
+  ]
+}
+</script>
 </head>
-<body class="bg-main">
-  <div class="overlay">
-    <div id="loader" class="loader">
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="tunerapps home">
+      <svg aria-hidden="true"><use href="/assets/img/icons.svg#logo"/></svg>
+      <span class="wordmark">tuner<span>apps</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#apps">Apps</a>
+      <a href="/#about">About</a>
+      <a href="/journal/">Journal</a>
+      <a class="nav-cta" href="/#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wrap hero">
+  <div class="hero-copy">
+    <p class="eyebrow">App &amp; software studio</p>
+    <h1 class="h-display">Smart apps,<br>built well.</h1>
+    <p class="lede">We're a team of designers and developers who build and ship mobile apps, web products, tools and games — each one fine-tuned until it simply works.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#apps">Browse the apps</a>
+      <a class="btn btn-ghost" href="#about">Meet the team</a>
     </div>
   </div>
-<div class="container" id="app">
-  <!--end carosol-->  
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="images/carosol1.JPG" alt="First slide" style="height: 300px;width: 100%;">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/carosol2.JPG" alt="Second slide" style="height: 300px;width: 100%;">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/carosol3.JPG" alt="Third slide" style="height: 300px;width: 100%;">
-        </div>
+  <div class="dial-card" aria-hidden="true">
+    <div class="dial-top"><span>Now tuning</span><b>[Latest app] v[1.0]</b></div>
+    <div class="dial"><div class="dial-needle" style="left:63%"></div></div>
+    <div class="dial-scale"><span>Mobile</span><span>Tools</span><span>Productivity</span><span class="on">Games</span><span>Utilities</span></div>
+    <div class="dial-foot">
+      <div class="icon-stack">
+        <svg style="border-radius:28%"><use href="/assets/img/icons.svg#productivity"/></svg>
+        <svg style="border-radius:28%;box-shadow:0 0 0 3px var(--ink)"><use href="/assets/img/icons.svg#games"/></svg>
+        <svg style="border-radius:28%;box-shadow:0 0 0 3px var(--ink)"><use href="/assets/img/icons.svg#utilities"/></svg>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <p>[N] apps on iOS and Android, made, shipped and supported by a hands-on team.</p>
     </div>
-    <!--end carosol-->
-    <div class="mt">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#"><img src="images/dev.png" alt="nav-brand" class="nav-img"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" @click="gotoExperiences">Experiences</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" @click="gotoProjects">Projects</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" @click="gotoSkills">Skills</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" @click="gotoEducations">Educations</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" @click="gotoAboutMe">About Me</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link learn-with-me" href="./learn.html">Learn With Me
-                  <span><i class="fa fa-book"></i></span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-    </div>
-    <div id="Experiences" class="mt p bg-white shadow">
-        <div class="row">
-          <div class="col-sm-12">
-            <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</span></h4>
-            <span class="pull-right"><i class="fa fa-chevron-down text-info" v-on:click="slideExperiences" v-show="!isExperienceOpen"></i></span>
-            <span class="pull-right"><i class="fa fa-chevron-up text-info" v-on:click="slideExperiences" v-show="isExperienceOpen"></i></span>
-          </div>
-        </div>
-        <div class="row" id="experienceDetails">
-            <div class="col-sm-3">
-                <div class="alert alert-secondary">
-                  <ul class="li-none">
-                    <strong>System Developer</strong>
-                    <li><span><i class="fa fa-sitemap" aria-hidden="true"></i></span> Software people</li>
-                    <li><span><i class="fa fa-calendar" aria-hidden="true"></i></span> 12.11.2018 - present</li>
-                  </ul>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="alert alert-secondary">
-                  <ul class="li-none">
-                    <strong>Software Engineer</strong>
-                    <li><span><i class="fa fa-sitemap" aria-hidden="true"></i></span> Brain Station-23</li>
-                    <li><span><i class="fa fa-calendar" aria-hidden="true"></i></span> 01.01.2018 - 11.11.2018</li>
-                  </ul>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="alert alert-info">
-                  <ul class="li-none">
-                    <strong>Jr. Software Engineer</strong>
-                    <li><span><i class="fa fa-sitemap" aria-hidden="true"></i></span> Brain Station-23</li>
-                    <li><span><i class="fa fa-calendar" aria-hidden="true"></i></span> 15.07.2016 - 31.12.2017</li>
-                  </ul>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="alert alert-warning">
-                  <ul class="li-none">
-                    <strong>Programmer</strong>
-                    <li><span><i class="fa fa-sitemap" aria-hidden="true"></i></span> Balancika Outsourcing</li>
-                    <li><span><i class="fa fa-calendar" aria-hidden="true"></i></span> 01.09.2015 - 30.06.2016</li>
-                  </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="Projects" class="mt p bg-white shadow">
-        <div class="row">
-          <div class="col-sm-12">
-            <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-product-hunt" aria-hidden="true"></i> Projects</span></h4>
-            <span class="pull-right"><i class="fa fa-chevron-down text-info" v-on:click="slideProjects" v-show="!isProjectsOpen"></i></span>
-            <span class="pull-right"><i class="fa fa-chevron-up text-info" v-on:click="slideProjects" v-show="isProjectsOpen"></i></span>
-          </div>
-        </div>
-        <div id="projectDetails">
-          <!-- Button trigger modal -->
-          <div class="row">
-            <div class="col-sm-6">
-              <ul>
-                <li>
-                  <a role="button" class="text-success font-weight-bold" data-toggle="modal" data-target="#candidate">Webcruiter candidate <span><i class="fa fa-hand-o-up" aria-hidden="true"></i></span>
-                  </a>
-                </li>
-                <li>
-                  <a role="button" class="text-primary font-weight-bold" data-toggle="modal" data-target="#balancikaFin">Balancika finance management system <span><i class="fa fa-hand-o-up" aria-hidden="true"></i></span>
-                  </a>
-                </li>
-                <li>
-                  <a role="button" class="text-info font-weight-bold" data-toggle="modal" data-target="#balancikaHRM">Balancika HRM <span><i class="fa fa-hand-o-up" aria-hidden="true"></i></span>
-                  </a>
-                </li>
-                <li>
-                  <a role="button" class="text-secondary font-weight-bold" data-toggle="modal" data-target="#cityTouch">City touch wp app <span><i class="fa fa-hand-o-up" aria-hidden="true"></i></span>
-                  </a>
-                </li>
-                <li>
-                  <a role="button" class="text-warning font-weight-bold" data-toggle="modal" data-target="#toolkit">Daily service toolkit <span><i class="fa fa-hand-o-up" aria-hidden="true"></i></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-sm-3 text-center d-none d-sm-block">
-              <div>
-                <img src="images/tenor.gif" class="image-gif">
-              </div>
-            </div>
-            <div class="col-sm-3 d-none d-sm-block">
-              <div>
-                <img src="images/giphy.gif" class="image-gif">
-              </div>
-            </div>
-          </div>
+  </div>
+</section>
 
-          <div class="modal fade" id="candidate" tabindex="-1" role="dialog" aria-labelledby="candidateModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Webcruiter candidate</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="text-danger">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div>
-                    <h6>About:</h6>
-                    <p class="small">A recruiter application for candidate who are seeking jobs for selective employers</p>
-                  </div>
-                  <div>
-                    <h6>Technology used:</h6>
-                    <p class="small">Technologies used for this application is ASP.NET MVC 5.0, ASP.NET Web API, ASP.NET Identity 2.2, EF6, MS SQL Server, FluentMigrator, FluentValidation, Autofac as IoC container, I18N for translations, ABCpdf, VisualStudioOnline for source control with GIT repo, NUnit for Unit Testing, KendoUI and Kendo MVVM for client side framework.</p>
-                    <p>
-                      <a href="https://candidate.webcruiter.com" target="_blank">https://candidate.webcruiter.com</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal fade" id="balancikaFin" tabindex="-1" role="dialog" aria-labelledby="balancikaFinModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Balancika finance management system</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="text-danger">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div>
-                    <h6>About:</h6>
-                    <p class="small">A web based application to manage financial tasks and accounts related works</p>
-                  </div>
-                  <div>
-                    <h6>Technology used:</h6>
-                    <p class="small">Technologies used for this application is ASP.NET Webform, ASP.NET Web API, ASP.NET Identity for webworms, MS SQL Server, RDLC & Crystal report for Reporting , JQuery for client side interaction.</p>
-                    <p>
-                      <a href="https://asthabd.info" target="_blank">https://asthabd.info</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal fade" id="balancikaHRM" tabindex="-1" role="dialog" aria-labelledby="balancikaHRMModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Balancika HRM</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="text-danger">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div>
-                    <h6>About:</h6>
-                    <p class="small">A web based application to automate the HR department of different companies</p>
-                  </div>
-                  <div>
-                    <h6>Technology used:</h6>
-                    <p class="small">Technologies used for this application is ASP.NET Webform, ASP.NET Web API, ASP.NET Identity for webworms, MS SQL Server, RDLC & Crystal report for Reporting , JQuery for client side interaction.</p>
-                    <p>
-                      <a href="https://hrms.asthabd.info" target="_blank">https://hrms.asthabd.info</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal fade" id="cityTouch" tabindex="-1" role="dialog" aria-labelledby="cityTouchModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">City touch wp app</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="text-danger">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div>
-                    <h6>About:</h6>
-                    <p class="small">An windows phone application for city bank bangladesh online banking</p>
-                  </div>
-                  <div>
-                    <h6>Technology used:</h6>
-                    <p class="small">Technologies used for this application is Windows mobile framework, XAML, Web API, C# MVVM with Prism, MSSQL Server.</p>
-                    <p>
-                      <a href="https://www.microsoft.com/en-us/p/citytouch/9wzdncrcwbth?activetab=pivot%3aoverviewtab" target="_blank">https://www.microsoft.com/en-us/p/citytouch/9wzdncrcwbth?activetab=pivot%3aoverviewtab</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal fade" id="toolkit" tabindex="-1" role="dialog" aria-labelledby="cityTouchModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Daily service toolkit</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="text-danger">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div>
-                    <h6>About:</h6>
-                    <p class="small">A web based platform where people can get all of their compliance services</p>
-                  </div>
-                  <div>
-                    <h6>Technology used:</h6>
-                    <p class="small">Technologies used for this application are ASP.NET MVC5, Web API2,Entity Framework, Dependency Injection, MSSQL Server, JQuery, etc.</p>
-                    <p>
-                      <a href="#" target="_blank">https://bitbucket.org/omidcc/dailyservicetoolkit</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<section id="apps" class="band-white">
+  <div class="wrap section stack" style="gap:40px">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow">The apps</p>
+        <h2 class="h-section">Things we've made.</h2>
+      </div>
+      <div class="chips" role="group" aria-label="Filter apps" data-filter-group="apps" style="flex-direction:row">
+        <button class="chip" type="button" data-filter="All" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="Productivity" aria-pressed="false">Productivity</button>
+        <button class="chip" type="button" data-filter="Games" aria-pressed="false">Games</button>
+        <button class="chip" type="button" data-filter="Utilities" aria-pressed="false">Utilities</button>
+      </div>
     </div>
-    <!--educations start-->
-    <div id="Educations" class="mt p bg-white shadow">
-        <div class="row">
-          <div class="col-sm-12">
-            <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Educations</span></h4>
-            <span class="pull-right"><i class="fa fa-chevron-down text-info" v-on:click="slideEducations" v-show="!isEducationOpen"></i></span>
-            <span class="pull-right"><i class="fa fa-chevron-up text-info" v-on:click="slideEducations" v-show="isEducationOpen"></i></span>
-          </div>
-        </div>
-        <div class="row" id="educationDetails">
-            <div class="col-sm-4">
-                <div class="card border-primary mb-3">
-                  <div class="card-header">Graduation</div>
-                  <div class="card-body">
-                    <h5 class="card-title">Computer Science & Engineering 
-                        <span>
-                          <a data-toggle="collapse" href="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1" class="small text-primary">
-                            More <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                        </span>
-                    </h5>
-                    <div class="collapse multi-collapse" id="multiCollapseExample1">
-                      <div class="card-text">
-                        I have completed my B.Sc.(Hons.) in CSE from <a href="http://www.dhakacitycollege.edu.bd/index.php?request=cse" target="_blank">Dhaka City College</a> under National University. I obtained CGPA 3.43 on a scale of 4.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card border-success mb-3">
-                  <div class="card-header">Higher Secondary</div>
-                  <div class="card-body">
-                    <h5 class="card-title">Science 
-                        <span>
-                          <a data-toggle="collapse" href="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2" class="small text-success">
-                            More <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                        </span>
-                    </h5>
-                    <div class="collapse multi-collapse" id="multiCollapseExample2">
-                      <div class="card-text">
-                        I have completed my HSC in Science from <a href="http://www.notredamecollege-dhaka.com/" target="_blank">Notre Dame College, Dhaka</a>. I obtained CGPA 4.80 on a scale of 5.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card border-info mb-3">
-                  <div class="card-header">Higher Secondary</div>
-                  <div class="card-body">
-                    <h5 class="card-title">Science 
-                        <span>
-                          <a data-toggle="collapse" href="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3" class="small text-info">
-                            More <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                        </span>
-                    </h5>
-                    <div class="collapse multi-collapse" id="multiCollapseExample3">
-                      <div class="card-text">
-                        I have completed my SSC in Science from <a href="#" target="_blank">Kolapara High School, Munshigonj</a>. I obtained CGPA 5.00 on a scale of 5.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
+    <div class="grid grid-apps" data-filter-list="apps">
+      <a class="app-card" href="/apps/app-name/" data-cat="Productivity">
+        <div class="app-card-top"><svg aria-hidden="true"><use href="/assets/img/icons.svg#productivity"/></svg><span class="mono-label">iOS · Android</span></div>
+        <div class="app-card-body"><span class="cat">Productivity</span><span class="name">[App name]</span><span class="line">[One line on what it does and who it is for.]</span></div>
+        <span class="more">View app →</span>
+      </a>
+      <a class="app-card" href="/apps/app-name/" data-cat="Games">
+        <div class="app-card-top"><svg aria-hidden="true"><use href="/assets/img/icons.svg#games"/></svg><span class="mono-label">iOS · Android</span></div>
+        <div class="app-card-body"><span class="cat">Games</span><span class="name">[App name]</span><span class="line">[One line on what it does and who it is for.]</span></div>
+        <span class="more">View app →</span>
+      </a>
+      <a class="app-card" href="/apps/app-name/" data-cat="Utilities">
+        <div class="app-card-top"><svg aria-hidden="true"><use href="/assets/img/icons.svg#utilities"/></svg><span class="mono-label">Android</span></div>
+        <div class="app-card-body"><span class="cat">Utilities</span><span class="name">[App name]</span><span class="line">[One line on what it does and who it is for.]</span></div>
+        <span class="more">View app →</span>
+      </a>
+      <a class="app-card" href="/apps/app-name/" data-cat="Productivity">
+        <div class="app-card-top"><svg aria-hidden="true"><use href="/assets/img/icons.svg#productivity"/></svg><span class="mono-label">iOS</span></div>
+        <div class="app-card-body"><span class="cat">Productivity</span><span class="name">[App name]</span><span class="line">[One line on what it does and who it is for.]</span></div>
+        <span class="more">View app →</span>
+      </a>
+      <a class="app-card" href="/apps/app-name/" data-cat="Utilities">
+        <div class="app-card-top"><svg aria-hidden="true"><use href="/assets/img/icons.svg#utilities"/></svg><span class="mono-label">iOS · Android</span></div>
+        <div class="app-card-body"><span class="cat">Utilities</span><span class="name">[App name]</span><span class="line">[One line on what it does and who it is for.]</span></div>
+        <span class="more">View app →</span>
+      </a>
+      <a class="app-card" href="/apps/app-name/" data-cat="Games">
+        <div class="app-card-top"><svg aria-hidden="true"><use href="/assets/img/icons.svg#games"/></svg><span class="mono-label">Android</span></div>
+        <div class="app-card-body"><span class="cat">Games</span><span class="name">[App name]</span><span class="line">[One line on what it does and who it is for.]</span></div>
+        <span class="more">View app →</span>
+      </a>
     </div>
-    <!--educations end-->
-    <!--skills start-->
-    <div id="Skills" class="mt p bg-white shadow">
-        <div class="row">
-          <div class="col-sm-12">
-            <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-code" aria-hidden="true"></i> Skills</span></h4>
-            <span class="pull-right"><i class="fa fa-chevron-down text-info" v-on:click="slideSkills" v-show="!isSkillsOpen"></i></span>
-            <span class="pull-right"><i class="fa fa-chevron-up text-info" v-on:click="slideSkills" v-show="isSkillsOpen"></i></span>
-          </div>
-        </div>
-        <div class="row" id="skillsDetails">
-            <div class="col-sm-12">
-                <canvas id="myChart" width="400" height="200" class="bg-white"></canvas>
-            </div>
-        </div>
-    </div>
-    <!--skills end--> 
-    <!--abou me start-->
-    <div id="aboutMe" class="mt p bg-white shadow">
-        <div class="row">
-            <div class="col-sm-3 col-xs-12 text-center line-ver">
-                <img src="images/P2.jpg" alt="kahirul image" class="avatar">
-            </div>
-            <div class="col-sm-9 col-xs-12">
-                <div class="alert alert-default" role="alert">
-                  <h4 class="alert-heading"><span class="badge badge-info"><i class="fa fa-user" aria-hidden="true"></i> About Me</span></h4>
-                  <p>I am a full stack .NET developer. I love to play with javascript frameworks. I feel comfort to write codes both in server sides and client sides. Currently working with WebcruiterAS in Norway on behalf of Brain Station-23 on a project collaborating with two technical teams in Norway and Sweden.</p>
-                  <hr>
-                  <p class="mb-0">
-                    <a href="https://www.linkedin.com/in/md-khirul-islam-omi-90727972/" target="_blank" class="mr"><span><i class="fa fa-linkedin-square f30" aria-hidden="true"></i></span></a>
-                    <a class="mr" href="https://www.linkedin.com/khairul_omi" target="_blank"><span><i class="fa fa-twitter-square f30" aria-hidden="true"></i></span></a>
-                    <a class="mr" href="https://www.github.com/omidcc" target="_blank"><span><i class="fa fa-github-square f30" aria-hidden="true"></i></span></a>
-                    <a class="mr" href="https://www.bitbucket.com/omidcc" target="_blank"><span><i class="fa fa-bitbucket-square f30" aria-hidden="true"></i></span></a>
-                    <a class="mr" href="https://www.facebook.com/omicse" target="_blank"><span><i class="fa fa-facebook-square f30" aria-hidden="true"></i></span></a>
-                  </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--about me end-->
-    <div class="button-bottom">
-        <a v-on:click="gotoTop" class="btn btn-info btn-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-    </div>     
-</div>
+  </div>
+</section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script type="text/javascript" src="scripts/app.js"></script>
+<section class="wrap section stack" style="gap:40px">
+  <div class="stack" style="gap:10px">
+    <p class="eyebrow">How we work</p>
+    <h2 class="h-section">Find the signal. Cut the noise.</h2>
+  </div>
+  <div class="grid grid-3">
+    <div class="step"><span class="n">01 — Listen</span><h3>Start with one real problem</h3><p>Every app begins with something that annoyed us or someone we know — not a feature list.</p></div>
+    <div class="step"><span class="n">02 — Build</span><h3>Ship early, improve often</h3><p>A focused first version in people's hands beats a perfect plan in a notebook.</p></div>
+    <div class="step is-spark"><span class="n">03 — Tune</span><h3>Fine-tune until it disappears</h3><p>Speed, empty states, tiny animations — we keep adjusting until the app gets out of your way.</p></div>
+  </div>
+</section>
+
+<section id="about" class="band-mist">
+  <div class="wrap about">
+    <div class="ph" role="img" aria-label="Team photo placeholder">[Team photo]</div>
+    <div class="about-copy">
+      <p class="eyebrow on-mist">About us</p>
+      <h2 class="h-section">The team that sweats the details.</h2>
+      <p>tunerapps is a team of designers and developers. We do the design, the code, the release notes and the support emails ourselves — so nothing gets lost between departments, and every detail has an owner.</p>
+      <p>[A line about how the team started, what you love building together, and what's coming next.]</p>
+      <div class="stack" style="gap:12px;padding-top:6px">
+        <span class="mono-label" style="color:var(--body)">Tools we use</span>
+        <div class="tags"><span>[Swift]</span><span>[Kotlin]</span><span>[Flutter]</span><span>[Firebase]</span><span>[Figma]</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap team">
+    <div class="head-row" style="align-items:end">
+      <h3 class="h-sub">Meet the team</h3>
+      <span class="mono-label" style="color:var(--body)">[N] people · [City]</span>
+    </div>
+    <div class="grid grid-team">
+      <article class="member">
+        <div class="ph" role="img" aria-label="Photo placeholder">[Photo]</div>
+        <div class="member-body"><h3>Omi</h3><span class="role">Founder · [Role]</span><p>[One line about what they do here.]</p></div>
+      </article>
+      <article class="member">
+        <div class="ph" role="img" aria-label="Photo placeholder">[Photo]</div>
+        <div class="member-body"><h3>[Name]</h3><span class="role">[Role]</span><p>[One line about what they do here.]</p></div>
+      </article>
+      <article class="member">
+        <div class="ph" role="img" aria-label="Photo placeholder">[Photo]</div>
+        <div class="member-body"><h3>[Name]</h3><span class="role">[Role]</span><p>[One line about what they do here.]</p></div>
+      </article>
+      <article class="member">
+        <div class="ph" role="img" aria-label="Photo placeholder">[Photo]</div>
+        <div class="member-body"><h3>[Name]</h3><span class="role">[Role]</span><p>[One line about what they do here.]</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="journal" class="wrap section stack" style="gap:40px">
+  <div class="head-row">
+    <div>
+      <p class="eyebrow">Journal</p>
+      <h2 class="h-section">Notes from the workbench.</h2>
+    </div>
+    <a href="/journal/" style="font-size:16px;font-weight:500">All posts →</a>
+  </div>
+  <div class="grid grid-3">
+    <a class="post-card boxed" href="/journal/"><span class="post-meta">Build log · [Date]</span><span class="post-title">[Post title]</span><span class="post-excerpt">[One-sentence summary of the post.]</span></a>
+    <a class="post-card boxed" href="/journal/"><span class="post-meta">Release · [Date]</span><span class="post-title">[Post title]</span><span class="post-excerpt">[One-sentence summary of the post.]</span></a>
+    <a class="post-card boxed" href="/journal/"><span class="post-meta">Craft · [Date]</span><span class="post-title">[Post title]</span><span class="post-excerpt">[One-sentence summary of the post.]</span></a>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact-card">
+    <p class="eyebrow on-ink">Contact</p>
+    <h2>Got an idea worth tuning?</h2>
+    <p>Feedback on an app, a bug, a collaboration or a freelance project — a real person on the team reads and answers every message.</p>
+    <div class="contact-links">
+      <a class="btn btn-spark" href="mailto:hello@tunerapps.net">hello@tunerapps.net</a>
+      <a href="https://github.com/omidcc" rel="me noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> tunerapps · Made by the tunerapps team</span>
+    <nav aria-label="Footer"><a href="/privacy/">Privacy</a><a href="mailto:hello@tunerapps.net">Support</a></nav>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
 </body>
 </html>
