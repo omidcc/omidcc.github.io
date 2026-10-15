@@ -26,6 +26,24 @@
     });
   });
 
+  // Screenshot galleries: arrow buttons scroll the strip.
+  document.querySelectorAll('.gallery').forEach(function (g) {
+    var strip = g.querySelector('.shots');
+    var prev = g.querySelector('.prev');
+    var next = g.querySelector('.next');
+    if (!strip || !prev || !next) return;
+    function update() {
+      prev.hidden = strip.scrollLeft < 8;
+      next.hidden = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 8;
+    }
+    function go(dir) { strip.scrollBy({ left: dir * strip.clientWidth * 0.8, behavior: 'smooth' }); }
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    strip.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+
   // Footer year.
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 

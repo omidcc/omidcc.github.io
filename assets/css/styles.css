@@ -271,3 +271,12 @@ img, svg { display: block; max-width: 100%; }
 .app-banner .app-img { position: absolute; left: 24px; bottom: -36px; width: 72px; height: 72px; border-radius: 18px; border: 3px solid var(--white); background: var(--white); box-shadow: 0 4px 14px rgba(19, 33, 31, .18); }
 .app-card .app-card-body { padding: 0 24px; }
 .app-card .more { padding: 20px 24px 24px; }
+
+/* screenshot gallery */
+.gallery { position: relative; }
+.shots { scrollbar-width: thin; scrollbar-color: var(--soft) transparent; }
+.gallery-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); background: var(--white); color: var(--ink); font: 400 28px/1 var(--f-body); cursor: pointer; box-shadow: 0 4px 14px rgba(19, 33, 31, .15); display: flex; align-items: center; justify-content: center; padding: 0 0 4px; z-index: 2; }
+.gallery-btn:hover { background: var(--ink); color: var(--paper); }
+.gallery-btn.prev { left: -12px; }
+.gallery-btn.next { right: -12px; }
+@media (max-width: 700px) { .gallery-btn { display: none !important; } }
