@@ -6,8 +6,18 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tunerapps.net/privacy/</loc>
+    <loc>https://tunerapps.net/apps/fruit-slice/</loc>
     <lastmod>2026-10-16</lastmod>
-    <priority>0.3</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tunerapps.net/apps/hum/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tunerapps.net/apps/bubble-words/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
