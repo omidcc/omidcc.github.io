@@ -280,3 +280,74 @@ img, svg { display: block; max-width: 100%; }
 .gallery-btn.prev { left: -12px; }
 .gallery-btn.next { right: -12px; }
 @media (max-width: 700px) { .gallery-btn { display: none !important; } }
+
+/* ---------- motion ---------- */
+:root { --ease-out: cubic-bezier(.2, .8, .2, 1); --spring: cubic-bezier(.34, 1.56, .64, 1); }
+
+/* page-to-page transitions (Chrome/Edge/Safari; others just navigate normally) */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .site-header { view-transition-name: site-header; }
+  ::view-transition-old(root) { animation: vt-out .22s ease both; }
+  ::view-transition-new(root) { animation: vt-in .45s var(--ease-out) both; }
+  ::view-transition-group(*) { animation-duration: .5s; animation-timing-function: var(--ease-out); }
+}
+@keyframes vt-out { to { opacity: 0; transform: translateY(-8px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(18px); } }
+
+/* scroll reveal: main.js tags elements with data-reveal and adds .is-in when visible */
+[data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease-out), transform .8s var(--ease-out); transition-delay: var(--d, 0ms); will-change: opacity, transform; }
+[data-reveal].is-in { opacity: 1; transform: none; will-change: auto; }
+
+/* scroll progress + header state */
+.progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--spark); transform: scaleX(0); transform-origin: 0 50%; z-index: 20; pointer-events: none; }
+.site-header { transition: box-shadow .3s, background-color .3s; }
+.site-header.is-scrolled { box-shadow: 0 6px 24px rgba(19, 33, 31, .08); }
+
+/* hero dial: the needle hunts for the sweet spot, then settles and pulses */
+.dial-needle { transition: none; animation: tune 2.4s var(--ease-out) .3s both; }
+.dial-needle::before { animation: pulse 2.4s ease-out 2.7s infinite; }
+@keyframes tune { 0% { left: 6%; } 28% { left: 88%; } 52% { left: 30%; } 74% { left: 72%; } 100% { left: 63%; } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(227, 163, 62, .55); } 70%, 100% { box-shadow: 0 0 0 16px rgba(227, 163, 62, 0); } }
+
+/* floating phones */
+.phones .phone { animation: float 7s ease-in-out infinite; }
+.phones .phone + .phone { animation-delay: -3.5s; animation-duration: 8s; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* links and buttons */
+.nav a:not(.nav-cta) { position: relative; }
+.nav a:not(.nav-cta)::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; border-radius: 2px; background: var(--spark); transform: scaleX(0); transform-origin: 0 50%; transition: transform .3s var(--ease-out); }
+.nav a:not(.nav-cta):hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); }
+.btn, .store-btn, .nav-cta { transition: transform .25s var(--ease-out), box-shadow .25s, background-color .2s, border-color .2s; }
+.btn:hover, .store-btn:not(.is-soon):hover, .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(19, 33, 31, .18); }
+.btn:active, .store-btn:active, .nav-cta:active { transform: translateY(0); box-shadow: none; }
+.logo svg { transition: transform .5s var(--spring); }
+.logo:hover svg { transform: rotate(-14deg) scale(1.08); }
+
+/* app cards */
+.app-card { transition: transform .4s var(--ease-out), border-color .3s, box-shadow .4s; }
+.app-card:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(19, 33, 31, .14); }
+.app-banner-img { overflow: hidden; background: var(--mist); }
+.app-banner-img img { width: 100%; aspect-ratio: 2 / 1; height: auto; object-fit: cover; transition: transform .8s var(--ease-out); }
+.app-card:hover .app-banner-img img { transform: scale(1.07); }
+.app-banner .app-img { transition: transform .5s var(--spring); }
+.app-card:hover .app-banner .app-img { transform: translateY(-5px) rotate(-5deg) scale(1.06); }
+.app-card .more i { display: inline-block; font-style: normal; transition: transform .3s var(--ease-out); }
+.app-card:hover .more i { transform: translateX(6px); }
+.mini-app, .member, .feature-card, .step, .post-card.boxed { transition: transform .35s var(--ease-out), box-shadow .35s, background-color .2s; }
+.mini-app:hover, .member:hover, .feature-card:hover, .post-card.boxed:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(19, 33, 31, .1); }
+.shots img { transition: transform .4s var(--ease-out), box-shadow .4s; }
+.shots img:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(19, 33, 31, .18); }
+.post-card .thumb, .feature-art { transition: transform .6s var(--ease-out); }
+.post-card:hover .thumb { transform: scale(1.03); }
+.chip { transition: background-color .2s, color .2s, border-color .2s, transform .25s var(--spring); }
+.chip:active { transform: scale(.94); }
+[data-filter-list] > * { animation: pop .45s var(--ease-out) both; }
+@keyframes pop { from { opacity: 0; transform: scale(.96) translateY(10px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; }
+  .phones .phone, .dial-needle, .dial-needle::before { animation: none; }
+  .progress { display: none; }
+}

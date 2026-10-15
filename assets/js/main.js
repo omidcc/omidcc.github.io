@@ -47,13 +47,64 @@
   // Footer year.
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  // Hero dial: the needle settles on the sweet spot.
-  var needle = document.querySelector('.dial-needle');
-  if (needle && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var target = needle.style.left || '63%';
-    needle.style.left = '20%';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Header shadow + scroll progress bar.
+  var header = document.querySelector('.site-header');
+  var bar = null;
+  if (!reduce) {
+    bar = document.createElement('div');
+    bar.className = 'progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+  }
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
     requestAnimationFrame(function () {
-      requestAnimationFrame(function () { needle.style.left = target; });
+      var y = window.scrollY;
+      if (header) header.classList.toggle('is-scrolled', y > 8);
+      if (bar) {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+      }
+      ticking = false;
     });
   }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Scroll reveal: tag elements, stagger siblings, show when they enter the viewport.
+  if (reduce || !('IntersectionObserver' in window)) return;
+  var selectors = [
+    '.hero-copy > *', '.dial-card', '.head-row', '.grid > *', '.step', '.about > *', '.team .head-row',
+    '.contact-card', '.app-hero-copy > *', '.phones', '.gallery', '.details > div', '.privacy-card',
+    '.feature', '.stack > .eyebrow', '.stack > h2', '.prose > *', '.notfound > *', '.crumbs'
+  ];
+  var seen = new Set();
+  var targets = [];
+  document.querySelectorAll(selectors.join(',')).forEach(function (el) {
+    if (seen.has(el) || el.closest('[hidden]')) return;
+    seen.add(el);
+    var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+    el.style.setProperty('--d', Math.min(i, 6) * 80 + 'ms');
+    el.setAttribute('data-reveal', '');
+    targets.push(el);
+  });
+  // Once revealed, drop the helper attributes so hover transitions are not delayed or overridden.
+  function cleanup(el) {
+    var delay = parseInt(el.style.getPropertyValue('--d'), 10) || 0;
+    setTimeout(function () {
+      el.removeAttribute('data-reveal');
+      el.classList.remove('is-in');
+      el.style.removeProperty('--d');
+    }, delay + 900);
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { var t = e.target; t.classList.add('is-in'); io.unobserve(t); cleanup(t); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  targets.forEach(function (el) { io.observe(el); });
 })();
