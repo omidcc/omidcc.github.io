@@ -351,3 +351,9 @@ img, svg { display: block; max-width: 100%; }
   .phones .phone, .dial-needle, .dial-needle::before { animation: none; }
   .progress { display: none; }
 }
+
+/* hero screenshots: show the whole image, no cropping inside a frame */
+.phone { aspect-ratio: auto; padding: 0; background: none; border-radius: 22px; box-shadow: 0 18px 40px rgba(19, 33, 31, .22); }
+.phone img { display: block; width: 100%; height: auto; border-radius: 22px; object-fit: contain; }
+.phones { align-items: flex-start; }
+.phone { align-self: flex-start; }
