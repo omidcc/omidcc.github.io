@@ -194,14 +194,14 @@
     }
 
     // dot grid: faint everywhere, glowing near the pointer
-    var base = dark ? 0.1 : 0.12;
+    var base = dark ? 0.16 : 0.24;
     var rgb = dark ? '127,179,169' : '47,111,104';
     var reach = 170;
     for (var gx = GRID / 2; gx < w; gx += GRID) {
       for (var gy = GRID / 2; gy < h; gy += GRID) {
         var dx = gx - px, dy = gy - py;
         var near = active || reduce ? Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / reach) : 0;
-        var r = 1 + near * 1.6;
+        var r = 1.2 + near * 1.6;
         if (near > 0.02) {
           ctx.fillStyle = 'rgba(227,163,62,' + (0.15 + near * 0.65).toFixed(3) + ')';
         } else {

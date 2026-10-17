@@ -470,3 +470,6 @@ img, svg { display: block; max-width: 100%; }
 .band-mist { background: color-mix(in srgb, var(--mist) 58%, transparent); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
 .site-header { background: color-mix(in srgb, var(--paper) 86%, transparent); }
 .site-footer { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.band-white, .band-mist { -webkit-backdrop-filter: none; backdrop-filter: none; }
+.band-white { background: color-mix(in srgb, var(--white) 46%, transparent); }
+.band-mist { background: color-mix(in srgb, var(--mist) 50%, transparent); }
