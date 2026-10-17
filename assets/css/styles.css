@@ -403,3 +403,4 @@ img, svg { display: block; max-width: 100%; }
 .member-photo { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 25%; border-radius: 14px; background: var(--line); }
 .member-body h3 { font-size: 19px; line-height: 1.25; }
 .member-body { padding-bottom: 2px; }
+.about-photo { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 28px; background: var(--ink); box-shadow: 0 24px 48px rgba(19, 33, 31, .18); }
