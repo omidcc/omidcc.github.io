@@ -474,3 +474,14 @@ img, svg { display: block; max-width: 100%; }
 .band-white { background: color-mix(in srgb, var(--white) 46%, transparent); }
 .band-mist { background: color-mix(in srgb, var(--mist) 50%, transparent); }
 .post-card .thumb-img { aspect-ratio: 2 / 1; object-fit: contain; }
+
+/* compact header on phones: logo + toggle on the first row, links on the second */
+@media (max-width: 640px) {
+  .site-header .wrap { position: relative; padding-block: 10px 8px; gap: 6px 12px; }
+  .logo svg { width: 30px; height: 30px; }
+  .wordmark { font-size: 21px; }
+  .nav { width: 100%; justify-content: space-between; gap: 10px; font-size: 14px; }
+  .nav .nav-cta { padding: 9px 14px; margin-left: auto; }
+  .theme-toggle { position: absolute; top: 8px; right: var(--gutter); width: 40px; height: 40px; }
+  html { scroll-padding-top: 108px; }
+}
