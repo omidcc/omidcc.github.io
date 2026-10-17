@@ -139,3 +139,106 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
   targets.forEach(function (el) { io.observe(el); });
 })();
+
+/* Signal background: tuning-wave ribbons that lock together around a spark needle that follows the pointer. */
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canvas = document.createElement('canvas');
+  canvas.className = 'bg-canvas';
+  canvas.setAttribute('aria-hidden', 'true');
+  document.body.insertBefore(canvas, document.body.firstChild);
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var w = 0, h = 0, dpr = 1;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (reduce) draw(4000);
+  }
+
+  var target = 0.5, needle = 0.5, havePointer = false, scrollY = 0;
+  window.addEventListener('pointermove', function (e) { target = e.clientX / (w || 1); havePointer = true; }, { passive: true });
+  window.addEventListener('scroll', function () { scrollY = window.scrollY; if (reduce) draw(4000); }, { passive: true });
+  window.addEventListener('resize', resize);
+
+  // y = vertical position (0-1), a = amplitude (px), f = cycles across the screen, s = drift speed, p = phase
+  var lines = [
+    { y: 0.20, a: 46, f: 1.3, s: 0.00035, p: 0.0, w: 1.6, o: 0.55 },
+    { y: 0.32, a: 58, f: 1.7, s: -0.00028, p: 1.1, w: 1.3, o: 0.45 },
+    { y: 0.44, a: 70, f: 1.1, s: 0.00042, p: 2.2, w: 1.8, o: 0.65 },
+    { y: 0.56, a: 62, f: 1.9, s: -0.00033, p: 3.3, w: 1.3, o: 0.45 },
+    { y: 0.68, a: 54, f: 1.4, s: 0.00026, p: 4.4, w: 1.6, o: 0.55 },
+    { y: 0.80, a: 44, f: 2.1, s: -0.0004, p: 5.5, w: 1.2, o: 0.4 },
+    { y: 0.90, a: 34, f: 1.5, s: 0.0003, p: 0.7, w: 1.1, o: 0.3 }
+  ];
+
+  function draw(t) {
+    var dark = document.documentElement.dataset.theme === 'dark';
+    var rgb = dark ? '127,179,169' : '47,111,104';
+    var strength = dark ? 0.62 : 0.55;
+    var count = w < 640 ? 5 : lines.length;
+    var nx = reduce ? 0.62 : (havePointer ? needle : 0.5 + 0.28 * Math.sin(t * 0.0003));
+    var cx = nx * w;
+    var scroll = scrollY * 0.0017;
+    ctx.clearRect(0, 0, w, h);
+
+    for (var i = 0; i < count; i++) {
+      var L = lines[i];
+      var grad = ctx.createLinearGradient(0, 0, w, 0);
+      var lo = Math.max(0, nx - 0.22), hi = Math.min(1, nx + 0.22);
+      var base = (L.o * strength).toFixed(3), peak = Math.min(0.9, L.o * strength * 2.4).toFixed(3);
+      grad.addColorStop(0, 'rgba(' + rgb + ',' + (L.o * strength * 0.35).toFixed(3) + ')');
+      if (lo > 0) grad.addColorStop(lo, 'rgba(' + rgb + ',' + base + ')');
+      grad.addColorStop(nx, 'rgba(' + rgb + ',' + peak + ')');
+      if (hi < 1) grad.addColorStop(hi, 'rgba(' + rgb + ',' + base + ')');
+      grad.addColorStop(1, 'rgba(' + rgb + ',' + (L.o * strength * 0.35).toFixed(3) + ')');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = L.w;
+      ctx.beginPath();
+      for (var x = 0; x <= w; x += 6) {
+        var u = x / w;
+        var d = (x - cx) / (w * 0.16);
+        var lock = Math.exp(-d * d);                  // 1 at the needle, 0 far away
+        var phase = L.p * (1 - lock) + t * L.s + scroll * (i % 2 ? -1 : 1) * 4;
+        var wave = Math.sin(u * L.f * 6.2832 + phase) * 0.72 + Math.sin(u * L.f * 11.3 + phase * 1.7) * 0.28;
+        var y = L.y * h + L.a * wave * (1 + lock * 0.9) * (1 - lock * 0.35 * (i % 3));
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+
+    // spark needle + glow where the signal locks
+    var sg = ctx.createLinearGradient(0, 0, 0, h);
+    sg.addColorStop(0, 'rgba(227,163,62,0)');
+    sg.addColorStop(0.5, 'rgba(227,163,62,' + (dark ? 0.55 : 0.5) + ')');
+    sg.addColorStop(1, 'rgba(227,163,62,0)');
+    ctx.fillStyle = sg;
+    ctx.fillRect(cx - 1, 0, 2, h);
+    var gy = h * 0.5;
+    var glow = ctx.createRadialGradient(cx, gy, 0, cx, gy, 170);
+    glow.addColorStop(0, 'rgba(227,163,62,' + (dark ? 0.2 : 0.17) + ')');
+    glow.addColorStop(1, 'rgba(227,163,62,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(cx - 170, gy - 170, 340, 340);
+    ctx.fillStyle = 'rgba(227,163,62,0.9)';
+    ctx.beginPath();
+    ctx.arc(cx, gy, 4.5, 0, 6.2832);
+    ctx.fill();
+  }
+
+  resize();
+  if (reduce) return;
+  var last = 0;
+  function frame(t) {
+    needle += (target - needle) * 0.06;
+    if (t - last > 15) { draw(t); last = t; }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
