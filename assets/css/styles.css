@@ -35,32 +35,31 @@
   --max: 1200px;
 }
 
+/* appearance: follows the device by default; data-theme (set by main.js / the toggle) overrides */
 :root { color-scheme: light dark; }
+:root[data-theme="light"] { color-scheme: light; }
 
-/* dark appearance follows the device / browser setting */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0D1816;
-    --white: #14231F;
-    --mist: #1B2E2A;
-    --line: #2A403B;
-    --ink: #1A2D29;
-    --fg: #EEF2EE;
-    --body: #B8C5BF;
-    --muted: #8FA19A;
-    --link: #7FB3A9;
-    --link-hover: #A6D0C6;
-    --amber-text: #E3A33E;
-    --press-bg: #EEF2EE;
-    --press-fg: #0D1816;
-  }
-  .dial-card, .contact-card, .privacy-card, .feature, .store-btn:not(.is-soon) { box-shadow: inset 0 0 0 1px var(--line); }
-  .app-card, .mini-app, .member, .feature-card, .post-card.boxed { box-shadow: none; }
-  .site-header.is-scrolled { box-shadow: 0 6px 24px rgba(0, 0, 0, .35); }
-  .app-card:hover, .mini-app:hover, .member:hover, .feature-card:hover, .post-card.boxed:hover, .shots img:hover { box-shadow: 0 18px 40px rgba(0, 0, 0, .45); }
-  .phone { box-shadow: 0 18px 40px rgba(0, 0, 0, .5); }
-  .shots img { border-color: var(--line); }
+  :root:not([data-theme]) { color-scheme: dark; --paper: #0D1816; --white: #14231F; --mist: #1B2E2A; --line: #2A403B; --ink: #1A2D29; --fg: #EEF2EE; --body: #B8C5BF; --muted: #8FA19A; --link: #7FB3A9; --link-hover: #A6D0C6; --amber-text: #E3A33E; --press-bg: #EEF2EE; --press-fg: #0D1816; }
+  :root:not([data-theme]) .dial-card, :root:not([data-theme]) .contact-card, :root:not([data-theme]) .privacy-card, :root:not([data-theme]) .feature, :root:not([data-theme]) .store-btn:not(.is-soon) { box-shadow: inset 0 0 0 1px var(--line); }
+  :root:not([data-theme]) .app-card, :root:not([data-theme]) .mini-app, :root:not([data-theme]) .member, :root:not([data-theme]) .feature-card, :root:not([data-theme]) .post-card.boxed { box-shadow: none; }
+  :root:not([data-theme]) .site-header.is-scrolled { box-shadow: 0 6px 24px rgba(0, 0, 0, .35); }
+  :root:not([data-theme]) .app-card:hover, :root:not([data-theme]) .mini-app:hover, :root:not([data-theme]) .member:hover, :root:not([data-theme]) .feature-card:hover, :root:not([data-theme]) .post-card.boxed:hover, :root:not([data-theme]) .shots img:hover { box-shadow: 0 18px 40px rgba(0, 0, 0, .45); }
+  :root:not([data-theme]) .phone { box-shadow: 0 18px 40px rgba(0, 0, 0, .5); }
+  :root:not([data-theme]) .shots img { border-color: var(--line); }
+  :root:not([data-theme]) .theme-toggle .moon { display: none; }
+  :root:not([data-theme]) .theme-toggle .sun { display: block; }
 }
+
+:root[data-theme="dark"] { color-scheme: dark; --paper: #0D1816; --white: #14231F; --mist: #1B2E2A; --line: #2A403B; --ink: #1A2D29; --fg: #EEF2EE; --body: #B8C5BF; --muted: #8FA19A; --link: #7FB3A9; --link-hover: #A6D0C6; --amber-text: #E3A33E; --press-bg: #EEF2EE; --press-fg: #0D1816; }
+:root[data-theme="dark"] .dial-card, :root[data-theme="dark"] .contact-card, :root[data-theme="dark"] .privacy-card, :root[data-theme="dark"] .feature, :root[data-theme="dark"] .store-btn:not(.is-soon) { box-shadow: inset 0 0 0 1px var(--line); }
+:root[data-theme="dark"] .app-card, :root[data-theme="dark"] .mini-app, :root[data-theme="dark"] .member, :root[data-theme="dark"] .feature-card, :root[data-theme="dark"] .post-card.boxed { box-shadow: none; }
+:root[data-theme="dark"] .site-header.is-scrolled { box-shadow: 0 6px 24px rgba(0, 0, 0, .35); }
+:root[data-theme="dark"] .app-card:hover, :root[data-theme="dark"] .mini-app:hover, :root[data-theme="dark"] .member:hover, :root[data-theme="dark"] .feature-card:hover, :root[data-theme="dark"] .post-card.boxed:hover, :root[data-theme="dark"] .shots img:hover { box-shadow: 0 18px 40px rgba(0, 0, 0, .45); }
+:root[data-theme="dark"] .phone { box-shadow: 0 18px 40px rgba(0, 0, 0, .5); }
+:root[data-theme="dark"] .shots img { border-color: var(--line); }
+:root[data-theme="dark"] .theme-toggle .moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .sun { display: block; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
@@ -391,3 +390,11 @@ img, svg { display: block; max-width: 100%; }
 .phone img { display: block; width: 100%; height: auto; border-radius: 22px; object-fit: contain; }
 .phones { align-items: flex-start; }
 .phone { align-self: flex-start; }
+
+/* theme toggle */
+.theme-toggle { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--fg); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: background-color .2s, border-color .2s, transform .4s var(--spring); }
+.theme-toggle:hover { border-color: var(--fg); transform: rotate(20deg); }
+.theme-toggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .sun { display: none; }
+.theme-toggle .moon { display: block; }
+.theme-anim, .theme-anim *, .theme-anim *::before, .theme-anim *::after { transition: background-color .35s ease, color .35s ease, border-color .35s ease, box-shadow .35s ease !important; }

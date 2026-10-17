@@ -26,6 +26,37 @@
     });
   });
 
+  // Light/dark toggle. The head script already set data-theme (saved choice, else the device setting).
+  var root = document.documentElement;
+  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  var toggles = document.querySelectorAll('.theme-toggle');
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
+    toggles.forEach(function (b) {
+      b.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (m, i) {
+      if (i > 0) m.remove();
+      else { m.removeAttribute('media'); m.setAttribute('content', theme === 'dark' ? '#0D1816' : '#F5F6F2'); }
+    });
+  }
+  applyTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
+  toggles.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.classList.add('theme-anim');
+      applyTheme(next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      setTimeout(function () { root.classList.remove('theme-anim'); }, 450);
+    });
+  });
+  // Follow live changes of the device setting until the visitor picks a theme themselves.
+  darkQuery.addEventListener('change', function (e) {
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (err) {}
+    if (!saved) applyTheme(e.matches ? 'dark' : 'light');
+  });
+
   // Screenshot galleries: arrow buttons scroll the strip.
   document.querySelectorAll('.gallery').forEach(function (g) {
     var strip = g.querySelector('.shots');
