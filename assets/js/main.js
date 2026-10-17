@@ -169,30 +169,38 @@
 
   // y = vertical position (0-1), a = amplitude (px), f = cycles across the screen, s = drift speed, p = phase
   var lines = [
-    { y: 0.20, a: 46, f: 1.3, s: 0.00035, p: 0.0, w: 1.6, o: 0.55 },
-    { y: 0.32, a: 58, f: 1.7, s: -0.00028, p: 1.1, w: 1.3, o: 0.45 },
-    { y: 0.44, a: 70, f: 1.1, s: 0.00042, p: 2.2, w: 1.8, o: 0.65 },
-    { y: 0.56, a: 62, f: 1.9, s: -0.00033, p: 3.3, w: 1.3, o: 0.45 },
-    { y: 0.68, a: 54, f: 1.4, s: 0.00026, p: 4.4, w: 1.6, o: 0.55 },
-    { y: 0.80, a: 44, f: 2.1, s: -0.0004, p: 5.5, w: 1.2, o: 0.4 },
-    { y: 0.90, a: 34, f: 1.5, s: 0.0003, p: 0.7, w: 1.1, o: 0.3 }
+    { y: 0.24, a: 70, f: 0.9, s: 0.00018, p: 0.0, w: 1.4, o: 0.5 },
+    { y: 0.46, a: 84, f: 1.2, s: -0.00014, p: 2.1, w: 1.6, o: 0.6 },
+    { y: 0.68, a: 76, f: 0.8, s: 0.00016, p: 4.2, w: 1.4, o: 0.5 },
+    { y: 0.88, a: 56, f: 1.1, s: -0.00012, p: 1.0, w: 1.2, o: 0.4 }
   ];
 
   function draw(t) {
     var dark = document.documentElement.dataset.theme === 'dark';
     var rgb = dark ? '127,179,169' : '47,111,104';
-    var strength = dark ? 0.62 : 0.55;
-    var count = w < 640 ? 5 : lines.length;
+    var strength = dark ? 0.5 : 0.4;
+    var count = w < 640 ? 3 : lines.length;
     var nx = reduce ? 0.62 : (havePointer ? needle : 0.5 + 0.28 * Math.sin(t * 0.0003));
     var cx = nx * w;
     var scroll = scrollY * 0.0017;
     ctx.clearRect(0, 0, w, h);
+    var R = Math.max(w, h);
+    var wa = ctx.createRadialGradient(w * (0.18 + 0.08 * Math.sin(t * 0.00021)), h * (0.22 + 0.08 * Math.cos(t * 0.00017)), 0, w * 0.2, h * 0.25, R * 0.6);
+    wa.addColorStop(0, 'rgba(' + rgb + ',' + (dark ? 0.22 : 0.14) + ')');
+    wa.addColorStop(1, 'rgba(' + rgb + ',0)');
+    ctx.fillStyle = wa;
+    ctx.fillRect(0, 0, w, h);
+    var wb = ctx.createRadialGradient(w * (0.82 + 0.07 * Math.cos(t * 0.00019)), h * (0.78 + 0.07 * Math.sin(t * 0.00023)), 0, w * 0.8, h * 0.8, R * 0.55);
+    wb.addColorStop(0, 'rgba(227,163,62,' + (dark ? 0.1 : 0.09) + ')');
+    wb.addColorStop(1, 'rgba(227,163,62,0)');
+    ctx.fillStyle = wb;
+    ctx.fillRect(0, 0, w, h);
 
     for (var i = 0; i < count; i++) {
       var L = lines[i];
       var grad = ctx.createLinearGradient(0, 0, w, 0);
       var lo = Math.max(0, nx - 0.22), hi = Math.min(1, nx + 0.22);
-      var base = (L.o * strength).toFixed(3), peak = Math.min(0.9, L.o * strength * 2.4).toFixed(3);
+      var base = (L.o * strength).toFixed(3), peak = Math.min(0.9, L.o * strength * 2.0).toFixed(3);
       grad.addColorStop(0, 'rgba(' + rgb + ',' + (L.o * strength * 0.35).toFixed(3) + ')');
       if (lo > 0) grad.addColorStop(lo, 'rgba(' + rgb + ',' + base + ')');
       grad.addColorStop(nx, 'rgba(' + rgb + ',' + peak + ')');
@@ -201,13 +209,13 @@
       ctx.strokeStyle = grad;
       ctx.lineWidth = L.w;
       ctx.beginPath();
-      for (var x = 0; x <= w; x += 6) {
+      for (var x = 0; x <= w; x += 8) {
         var u = x / w;
         var d = (x - cx) / (w * 0.16);
         var lock = Math.exp(-d * d);                  // 1 at the needle, 0 far away
         var phase = L.p * (1 - lock) + t * L.s + scroll * (i % 2 ? -1 : 1) * 4;
-        var wave = Math.sin(u * L.f * 6.2832 + phase) * 0.72 + Math.sin(u * L.f * 11.3 + phase * 1.7) * 0.28;
-        var y = L.y * h + L.a * wave * (1 + lock * 0.9) * (1 - lock * 0.35 * (i % 3));
+        var wave = Math.sin(u * L.f * 6.2832 + phase);
+        var y = L.y * h + L.a * wave * (1 - lock * 0.55);
         if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       }
       ctx.stroke();
@@ -216,13 +224,13 @@
     // spark needle + glow where the signal locks
     var sg = ctx.createLinearGradient(0, 0, 0, h);
     sg.addColorStop(0, 'rgba(227,163,62,0)');
-    sg.addColorStop(0.5, 'rgba(227,163,62,' + (dark ? 0.55 : 0.5) + ')');
+    sg.addColorStop(0.5, 'rgba(227,163,62,' + (dark ? 0.4 : 0.32) + ')');
     sg.addColorStop(1, 'rgba(227,163,62,0)');
     ctx.fillStyle = sg;
     ctx.fillRect(cx - 1, 0, 2, h);
     var gy = h * 0.5;
     var glow = ctx.createRadialGradient(cx, gy, 0, cx, gy, 170);
-    glow.addColorStop(0, 'rgba(227,163,62,' + (dark ? 0.2 : 0.17) + ')');
+    glow.addColorStop(0, 'rgba(227,163,62,' + (dark ? 0.14 : 0.11) + ')');
     glow.addColorStop(1, 'rgba(227,163,62,0)');
     ctx.fillStyle = glow;
     ctx.fillRect(cx - 170, gy - 170, 340, 340);

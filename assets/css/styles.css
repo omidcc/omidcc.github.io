@@ -464,3 +464,9 @@ img, svg { display: block; max-width: 100%; }
 .band-white { background: color-mix(in srgb, var(--white) 80%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .band-mist { background: color-mix(in srgb, var(--mist) 84%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .site-footer { background: color-mix(in srgb, var(--paper) 70%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+
+/* let the background show through the whole screen */
+.band-white { background: color-mix(in srgb, var(--white) 52%, transparent); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.band-mist { background: color-mix(in srgb, var(--mist) 58%, transparent); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.site-header { background: color-mix(in srgb, var(--paper) 86%, transparent); }
+.site-footer { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
