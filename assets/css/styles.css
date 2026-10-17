@@ -473,3 +473,4 @@ img, svg { display: block; max-width: 100%; }
 .band-white, .band-mist { -webkit-backdrop-filter: none; backdrop-filter: none; }
 .band-white { background: color-mix(in srgb, var(--white) 46%, transparent); }
 .band-mist { background: color-mix(in srgb, var(--mist) 50%, transparent); }
+.post-card .thumb-img { aspect-ratio: 2 / 1; object-fit: contain; }
