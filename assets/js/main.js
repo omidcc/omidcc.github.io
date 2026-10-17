@@ -140,7 +140,7 @@
   targets.forEach(function (el) { io.observe(el); });
 })();
 
-/* Signal background: tuning-wave ribbons that lock together around a spark needle that follows the pointer. */
+/* Aurora background: slow brand-colour light blobs and a dot grid that lights up around the pointer. */
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -152,6 +152,7 @@
   if (!ctx) return;
 
   var w = 0, h = 0, dpr = 1;
+  var px = -999, py = -999, tx = -999, ty = -999, active = 0;
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     w = window.innerWidth;
@@ -159,93 +160,67 @@
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    if (reduce) draw(4000);
+    if (reduce) draw(6000);
   }
-
-  var target = 0.5, needle = 0.5, havePointer = false, scrollY = 0;
-  window.addEventListener('pointermove', function (e) { target = e.clientX / (w || 1); havePointer = true; }, { passive: true });
-  window.addEventListener('scroll', function () { scrollY = window.scrollY; if (reduce) draw(4000); }, { passive: true });
+  window.addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; if (px < 0) { px = tx; py = ty; } active = 1; }, { passive: true });
+  document.addEventListener('pointerleave', function () { active = 0; });
   window.addEventListener('resize', resize);
 
-  // y = vertical position (0-1), a = amplitude (px), f = cycles across the screen, s = drift speed, p = phase
-  var lines = [
-    { y: 0.24, a: 70, f: 0.9, s: 0.00018, p: 0.0, w: 1.4, o: 0.5 },
-    { y: 0.46, a: 84, f: 1.2, s: -0.00014, p: 2.1, w: 1.6, o: 0.6 },
-    { y: 0.68, a: 76, f: 0.8, s: 0.00016, p: 4.2, w: 1.4, o: 0.5 },
-    { y: 0.88, a: 56, f: 1.1, s: -0.00012, p: 1.0, w: 1.2, o: 0.4 }
+  // x, y = home position (0-1); r = radius (share of the longest side); c = colour; a = light / dark strength
+  var blobs = [
+    { x: 0.14, y: 0.18, r: 0.62, c: '47,111,104', l: 0.2, d: 0.26, sx: 0.00021, sy: 0.00017, ph: 0 },
+    { x: 0.86, y: 0.30, r: 0.5, c: '227,163,62', l: 0.12, d: 0.12, sx: 0.00018, sy: 0.00023, ph: 1.7 },
+    { x: 0.5, y: 0.62, r: 0.55, c: '127,179,169', l: 0.16, d: 0.14, sx: 0.00015, sy: 0.00019, ph: 3.1 },
+    { x: 0.1, y: 0.92, r: 0.5, c: '30,74,69', l: 0.14, d: 0.3, sx: 0.00023, sy: 0.00014, ph: 4.6 },
+    { x: 0.92, y: 0.88, r: 0.46, c: '47,111,104', l: 0.14, d: 0.2, sx: 0.00017, sy: 0.00021, ph: 5.4 }
   ];
+  var GRID = 34;
 
   function draw(t) {
     var dark = document.documentElement.dataset.theme === 'dark';
-    var rgb = dark ? '127,179,169' : '47,111,104';
-    var strength = dark ? 0.5 : 0.4;
-    var count = w < 640 ? 3 : lines.length;
-    var nx = reduce ? 0.62 : (havePointer ? needle : 0.5 + 0.28 * Math.sin(t * 0.0003));
-    var cx = nx * w;
-    var scroll = scrollY * 0.0017;
-    ctx.clearRect(0, 0, w, h);
     var R = Math.max(w, h);
-    var wa = ctx.createRadialGradient(w * (0.18 + 0.08 * Math.sin(t * 0.00021)), h * (0.22 + 0.08 * Math.cos(t * 0.00017)), 0, w * 0.2, h * 0.25, R * 0.6);
-    wa.addColorStop(0, 'rgba(' + rgb + ',' + (dark ? 0.22 : 0.14) + ')');
-    wa.addColorStop(1, 'rgba(' + rgb + ',0)');
-    ctx.fillStyle = wa;
-    ctx.fillRect(0, 0, w, h);
-    var wb = ctx.createRadialGradient(w * (0.82 + 0.07 * Math.cos(t * 0.00019)), h * (0.78 + 0.07 * Math.sin(t * 0.00023)), 0, w * 0.8, h * 0.8, R * 0.55);
-    wb.addColorStop(0, 'rgba(227,163,62,' + (dark ? 0.1 : 0.09) + ')');
-    wb.addColorStop(1, 'rgba(227,163,62,0)');
-    ctx.fillStyle = wb;
-    ctx.fillRect(0, 0, w, h);
+    ctx.clearRect(0, 0, w, h);
 
-    for (var i = 0; i < count; i++) {
-      var L = lines[i];
-      var grad = ctx.createLinearGradient(0, 0, w, 0);
-      var lo = Math.max(0, nx - 0.22), hi = Math.min(1, nx + 0.22);
-      var base = (L.o * strength).toFixed(3), peak = Math.min(0.9, L.o * strength * 2.0).toFixed(3);
-      grad.addColorStop(0, 'rgba(' + rgb + ',' + (L.o * strength * 0.35).toFixed(3) + ')');
-      if (lo > 0) grad.addColorStop(lo, 'rgba(' + rgb + ',' + base + ')');
-      grad.addColorStop(nx, 'rgba(' + rgb + ',' + peak + ')');
-      if (hi < 1) grad.addColorStop(hi, 'rgba(' + rgb + ',' + base + ')');
-      grad.addColorStop(1, 'rgba(' + rgb + ',' + (L.o * strength * 0.35).toFixed(3) + ')');
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = L.w;
-      ctx.beginPath();
-      for (var x = 0; x <= w; x += 8) {
-        var u = x / w;
-        var d = (x - cx) / (w * 0.16);
-        var lock = Math.exp(-d * d);                  // 1 at the needle, 0 far away
-        var phase = L.p * (1 - lock) + t * L.s + scroll * (i % 2 ? -1 : 1) * 4;
-        var wave = Math.sin(u * L.f * 6.2832 + phase);
-        var y = L.y * h + L.a * wave * (1 - lock * 0.55);
-        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-      }
-      ctx.stroke();
+    for (var i = 0; i < blobs.length; i++) {
+      var b = blobs[i];
+      var bx = w * (b.x + 0.09 * Math.sin(t * b.sx + b.ph));
+      var by = h * (b.y + 0.09 * Math.cos(t * b.sy + b.ph));
+      var g = ctx.createRadialGradient(bx, by, 0, bx, by, R * b.r);
+      var a = dark ? b.d : b.l;
+      g.addColorStop(0, 'rgba(' + b.c + ',' + a + ')');
+      g.addColorStop(1, 'rgba(' + b.c + ',0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
     }
 
-    // spark needle + glow where the signal locks
-    var sg = ctx.createLinearGradient(0, 0, 0, h);
-    sg.addColorStop(0, 'rgba(227,163,62,0)');
-    sg.addColorStop(0.5, 'rgba(227,163,62,' + (dark ? 0.4 : 0.32) + ')');
-    sg.addColorStop(1, 'rgba(227,163,62,0)');
-    ctx.fillStyle = sg;
-    ctx.fillRect(cx - 1, 0, 2, h);
-    var gy = h * 0.5;
-    var glow = ctx.createRadialGradient(cx, gy, 0, cx, gy, 170);
-    glow.addColorStop(0, 'rgba(227,163,62,' + (dark ? 0.14 : 0.11) + ')');
-    glow.addColorStop(1, 'rgba(227,163,62,0)');
-    ctx.fillStyle = glow;
-    ctx.fillRect(cx - 170, gy - 170, 340, 340);
-    ctx.fillStyle = 'rgba(227,163,62,0.9)';
-    ctx.beginPath();
-    ctx.arc(cx, gy, 4.5, 0, 6.2832);
-    ctx.fill();
+    // dot grid: faint everywhere, glowing near the pointer
+    var base = dark ? 0.1 : 0.12;
+    var rgb = dark ? '127,179,169' : '47,111,104';
+    var reach = 170;
+    for (var gx = GRID / 2; gx < w; gx += GRID) {
+      for (var gy = GRID / 2; gy < h; gy += GRID) {
+        var dx = gx - px, dy = gy - py;
+        var near = active || reduce ? Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / reach) : 0;
+        var r = 1 + near * 1.6;
+        if (near > 0.02) {
+          ctx.fillStyle = 'rgba(227,163,62,' + (0.15 + near * 0.65).toFixed(3) + ')';
+        } else {
+          ctx.fillStyle = 'rgba(' + rgb + ',' + base + ')';
+        }
+        ctx.beginPath();
+        ctx.arc(gx, gy, r, 0, 6.2832);
+        ctx.fill();
+      }
+    }
   }
 
   resize();
   if (reduce) return;
   var last = 0;
   function frame(t) {
-    needle += (target - needle) * 0.06;
-    if (t - last > 15) { draw(t); last = t; }
+    px += (tx - px) * 0.18;
+    py += (ty - py) * 0.18;
+    if (t - last > 20) { draw(t); last = t; }
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
