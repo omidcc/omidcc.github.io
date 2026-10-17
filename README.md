@@ -7,7 +7,7 @@ Static site for tunerapps. Plain HTML, CSS and a little JS — no framework, no 
 ```
 index.html            home
 apps/<slug>/          one page per app
-journal/              journal (noindex until real posts exist)
+journal/<slug>/       journal posts (journal/ is the list)
 404.html              not-found page
 assets/css|js|img|fonts
 robots.txt, sitemap.xml, site.webmanifest

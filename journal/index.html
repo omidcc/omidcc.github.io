@@ -4,10 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Journal — tunerapps</title>
-<meta name="description" content="Build logs, release notes, design decisions and the occasional thing we got wrong — written by the people who made it.">
+<meta name="description" content="Build logs, design notes and release stories from the tunerapps team: how Fruit Slice, Hum and Bubble Words were made.">
 <link rel="canonical" href="https://tunerapps.net/journal/">
-<!-- TEMPLATE: placeholder posts. When real posts exist, delete the noindex line below and add /journal/ to /sitemap.xml. -->
-<meta name="robots" content="noindex, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#F5F6F2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0D1816" media="(prefers-color-scheme: dark)">
 
@@ -19,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="tunerapps">
 <meta property="og:title" content="Journal — tunerapps">
-<meta property="og:description" content="Build logs, release notes, design decisions and the occasional thing we got wrong.">
+<meta property="og:description" content="Build logs, design notes and release stories from the tunerapps team: how Fruit Slice, Hum and Bubble Words were made.">
 <meta property="og:url" content="https://tunerapps.net/journal/">
 <meta property="og:image" content="https://tunerapps.net/assets/img/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -27,7 +26,7 @@
 <link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})()</script>
-<link rel="stylesheet" href="/assets/css/styles.css?v=7">
+<link rel="stylesheet" href="/assets/css/styles.css?v=14">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -57,38 +56,25 @@
 </section>
 
 <section class="wrap" style="padding-bottom:48px">
-  <a class="feature" href="#">
-    <div class="feature-art">[Cover image]</div>
+  <a class="feature" href="/journal/fruit-slice-the-long-climb/">
+    <div class="feature-art feature-art-img"><img src="/assets/img/apps/fruit-slice/feature.jpg" width="1024" height="500" alt=""></div>
     <div class="feature-copy">
-      <div class="feature-meta"><span class="badge">Featured</span><span>Build log · [Date] · [N] min read</span></div>
-      <h2>[Featured post title]</h2>
-      <p>[Two-sentence summary of the post — what you built, what you learned, and why it matters to people using the app.]</p>
-      <span class="byline"><i></i><span>[Author name]</span></span>
+      <div class="feature-meta"><span class="badge">Featured</span><span>Build log · 18 Oct 2026 · 2 min read</span></div>
+      <h2>Fruit Slice: a one-finger game with a long climb</h2>
+      <p>How a simple swipe-to-slice idea grew into three modes, 15 blades, 11 dojos and a Weekly Cup — without a single ad.</p>
+      <span class="byline"><i></i><span>The tunerapps team</span></span>
     </div>
   </a>
 </section>
 
 <section class="wrap stack" style="padding-bottom:clamp(56px,8vw,96px);gap:28px">
   <div class="list-bar">
-    <div class="chips" role="group" aria-label="Filter posts" data-filter-group="posts">
-      <button class="chip" type="button" data-filter="All" aria-pressed="true">All</button>
-      <button class="chip" type="button" data-filter="Build log" aria-pressed="false">Build log</button>
-      <button class="chip" type="button" data-filter="Release" aria-pressed="false">Release</button>
-      <button class="chip" type="button" data-filter="Craft" aria-pressed="false">Craft</button>
-      <button class="chip" type="button" data-filter="Team" aria-pressed="false">Team</button>
-    </div>
-    <span class="count" data-filter-count="posts" aria-live="polite">9 posts</span>
+    <h2 class="h-sub">More posts</h2>
+    <span class="count">New posts as we ship</span>
   </div>
-  <div class="grid grid-posts" data-filter-list="posts">
-    <a class="post-card" href="#" data-cat="Build log"><div class="thumb build">[Image]</div><span class="post-meta">Build log · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
-    <a class="post-card" href="#" data-cat="Release"><div class="thumb release">[Image]</div><span class="post-meta">Release · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
-    <a class="post-card" href="#" data-cat="Craft"><div class="thumb craft">[Image]</div><span class="post-meta">Craft · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
-    <a class="post-card" href="#" data-cat="Team"><div class="thumb team">[Image]</div><span class="post-meta">Team · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
-    <a class="post-card" href="#" data-cat="Build log"><div class="thumb build">[Image]</div><span class="post-meta">Build log · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
-    <a class="post-card" href="#" data-cat="Release"><div class="thumb release">[Image]</div><span class="post-meta">Release · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
-    <a class="post-card" href="#" data-cat="Craft"><div class="thumb craft">[Image]</div><span class="post-meta">Craft · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
-    <a class="post-card" href="#" data-cat="Team"><div class="thumb team">[Image]</div><span class="post-meta">Team · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
-    <a class="post-card" href="#" data-cat="Build log"><div class="thumb build">[Image]</div><span class="post-meta">Build log · <span>[Date] · [N] min</span></span><span class="post-title">[Post title]</span><span class="post-excerpt">[One or two sentences on what the post covers.]</span></a>
+  <div class="grid grid-posts">
+    <a class="post-card" href="/journal/hum-offline-music-with-synced-lyrics/"><img class="thumb-img" src="/assets/img/apps/hum/feature.jpg" width="1024" height="500" loading="lazy" alt=""><span class="post-meta">Craft · <span>18 Oct 2026 · 2 min</span></span><span class="post-title">Hum: an offline music player that sings along with you</span><span class="post-excerpt">Synced lyrics, a five-band equalizer and no sign-in — what we built into a player for the songs already on your phone.</span></a>
+    <a class="post-card" href="/journal/bubble-words-spelling-for-little-hands/"><img class="thumb-img" src="/assets/img/apps/bubble-words/feature.jpg" width="1024" height="500" loading="lazy" alt=""><span class="post-meta">Build log · <span>18 Oct 2026 · 2 min</span></span><span class="post-title">Bubble Words: spelling for little hands, nothing to sell</span><span class="post-excerpt">Over 1,800 spoken words, 29 categories and a game that shows no ads, collects no data and needs no internet.</span></a>
   </div>
 </section>
 
@@ -101,6 +87,6 @@
   </div>
 </footer>
 
-<script src="/assets/js/main.js?v=4"></script>
+<script src="/assets/js/main.js?v=5"></script>
 </body>
 </html>

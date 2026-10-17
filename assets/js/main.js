@@ -111,7 +111,7 @@
   var selectors = [
     '.hero-copy > *', '.dial-card', '.head-row', '.grid > *', '.step', '.about > *', '.team .head-row',
     '.contact-card', '.app-hero-copy > *', '.phones', '.gallery', '.details > div', '.privacy-card',
-    '.feature', '.stack > .eyebrow', '.stack > h2', '.prose > *', '.notfound > *', '.crumbs'
+    '.feature', '.post-head > *', '.post-hero', '.post-body > *', '.stack > .eyebrow', '.stack > h2', '.prose > *', '.notfound > *', '.crumbs'
   ];
   var seen = new Set();
   var targets = [];
