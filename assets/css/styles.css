@@ -398,3 +398,8 @@ img, svg { display: block; max-width: 100%; }
 .theme-toggle .sun { display: none; }
 .theme-toggle .moon { display: block; }
 .theme-anim, .theme-anim *, .theme-anim *::before, .theme-anim *::after { transition: background-color .35s ease, color .35s ease, border-color .35s ease, box-shadow .35s ease !important; }
+
+/* team photos */
+.member-photo { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 25%; border-radius: 14px; background: var(--line); }
+.member-body h3 { font-size: 19px; line-height: 1.25; }
+.member-body { padding-bottom: 2px; }
